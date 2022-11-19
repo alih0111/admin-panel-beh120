@@ -49,22 +49,11 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
     setAddModal(1);
   };
 
-  // const deleteHandlerChild = async (last_id) => {
-  //   await deleteCategory(last_id);
-  //   mainData.map(async (item) => {
-  //     if (item.PARENTID == last_id) {
-  //       await deleteHandlerChild(item.id);
-  //     } else {
-  //       window.location.reload();
-  //     }
-  //   });
-  // };
-
   const num_child = (id) => {
     let i = 0;
     if (mainData) {
       mainData.map((p) => {
-        if (p.PARENTID == id) {
+        if (p.parent == id) {
           i++;
         }
       });
@@ -128,7 +117,7 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
             <div className="tree_icons_parents transition-all hover:bg-slate-200 hover:shadow-lg w-60 rounded-lg p-2 flex items-center justify-between cursor-pointer">
               {/* header */}
               <span className="pr-2 w-full">
-                {node.NAME}{" "}
+                {node.text}{" "}
                 <span className="text-gray-500">{`(${num_child(
                   node.id
                 )})`}</span>

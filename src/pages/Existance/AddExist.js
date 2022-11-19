@@ -83,6 +83,7 @@ export default function AddExist({ addModal, node }) {
               </label>{" "}
               <div id="container" className="flex gap-4 ">
                 <input
+                autocomplete="off"
                   value={newExist}
                   type="text"
                   name="name"
@@ -105,10 +106,9 @@ export default function AddExist({ addModal, node }) {
             </div>{" "}
             {/* buttons */}
             <div className="flex gap-2">
-              <button
-                onClick={() => {
-                  window.location.reload();
-                }}
+              <button 
+              onClick={e=>{e.preventDefault()
+                 window.location.reload()}}               
                 className="bg-transparent text-slate-500 px-4 py-1 rounded-lg border border-slate-500"
               >
                 انصراف{" "}

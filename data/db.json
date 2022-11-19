@@ -2,54 +2,41 @@
   "category": [
     {
       "id": "6fcf28f5-477a-4ff6-a08a-f1156a765b61",
-      "text": "پوشاک",
-      "parent": 0,
-      "droppable": true
-    },
-    {
-      "id": "0aba0aa3-8983-4885-a5d1-3b4f4ae68459",
-      "text": "مردانه",
-      "parent": "6fcf28f5-477a-4ff6-a08a-f1156a765b61",
-      "droppable": true
-    },
-    {
-      "id": "d8b33786-1ead-4f57-934e-9a28ac74786d",
-      "text": "جوراب",
-      "parent": "0aba0aa3-8983-4885-a5d1-3b4f4ae68459",
-      "droppable": false
-    },
-    {
-      "id": "33087d0e-5b27-4e29-8f7d-a534580a0e67",
       "text": "لباس",
-      "parent": "6fcf28f5-477a-4ff6-a08a-f1156a765b61",
-      "droppable": true
-    },
-    {
-      "id": "b31e6cd3-d068-488f-920e-f1c09f49d162",
-      "text": "تیشرت",
-      "parent": "33087d0e-5b27-4e29-8f7d-a534580a0e67"
-    },
-    {
-      "id": "1b4ce00d-1214-401d-8f1c-564757289607",
-      "text": "خوراکی",
-      "parent": 0,
-      "droppable": true
+      "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23",
+      "droppable": false
     },
     {
       "id": "da82a7d7-e51c-4d7b-b5b3-501cc1f22086",
       "text": "خشکبار",
-      "parent": "1b4ce00d-1214-401d-8f1c-564757289607",
-      "droppable": true
+      "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23",
+      "droppable": false
     },
     {
       "id": "252a3a19-3706-44ee-b87c-e6952c43bb58",
       "text": "آجیل",
-      "parent": "da82a7d7-e51c-4d7b-b5b3-501cc1f22086",
+      "parent": 0,
       "droppable": true
     },
     {
       "id": "67a210ea-d55f-4e3a-9a16-7ba8726fc3bf",
       "text": "پسته",
+      "parent": "252a3a19-3706-44ee-b87c-e6952c43bb58"
+    },
+    {
+      "id": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23",
+      "text": "پوشاک",
+      "parent": 0,
+      "droppable": true
+    },
+    {
+      "id": "03addc30-867b-470f-8c6f-777b75e51b00",
+      "text": "مردانه",
+      "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23"
+    },
+    {
+      "id": "898e4728-9cc1-4143-98a5-04b0a780b03a",
+      "text": "بادوم",
       "parent": "252a3a19-3706-44ee-b87c-e6952c43bb58"
     }
   ],

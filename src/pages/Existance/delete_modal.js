@@ -24,40 +24,41 @@ export default function Modal_Tree({ setModalNum, node }) {
     e.preventDefault();
     const getExist = async () => {
       try {
-        const {data} = await getOneExist(node.parent);
-        setParentNode(data)
+        const { data } = await getOneExist(node.parent);
+        setParentNode(data);
         // window.location.reload();
       } catch (error) {}
     };
-    getExist()
+    getExist();
     try {
       deleteHandlerChild(node.id, node);
     } catch (error) {}
   };
 
   const deleteHandlerChild = async (last_id, node) => {
-    await deleteCategory(last_id);
     mainData.map(async (item) => {
       if (item.parent == last_id) {
         await deleteHandlerChild(item.id);
-      } else {        
+      } else {
         window.location.reload();
       }
     });
+    await deleteCategory(last_id);
   };
 
   const childList = (id) => {
     let cc = [];
-    mainData.map((item) => {
-      if (item.parent == id) cc.push(item.text);
-    });
+    if (mainData)
+      mainData.map((item) => {
+        if (item.parent == id) cc.push(item.text);
+      });
     if (cc.length > 0)
       return { __html: `زیر شاخه هایی که حذف خواهند شد:  ${cc}` };
   };
 
   const [checkVal, setCheckVal] = useState(false);
   const checkboxHandler = () => {
-    let c = document.getElementById("add_parent_checkbox1");
+    let c = document.getElementById("checkbox_save_children");
     if (c.checked == true) {
       setCheckVal(true);
     } else {
@@ -101,9 +102,14 @@ export default function Modal_Tree({ setModalNum, node }) {
                   />
                   {/* <div className="chichi"></div> */}
                 </div>{" "}
+                <div className="flex gap-2 mb-4">
+                  <input onClick={checkboxHandler} type="checkbox" id="checkbox_save_children" />
+                  <label className="text-slate-700" htmlFor="checkbox_save_children">
+                    زیرشاخه ها باقی بمانند
+                  </label>
+                </div>
               </div>{" "}
-              {/* <input type="checkbox"/>
-                <div className="flex mb-4 gap-2">
+              {/* <div className="flex mb-4 gap-2">
                  
                 </div> */}
               {/* <span className=" p-1 rounded-lg border border-indigo-400"> */}{" "}
