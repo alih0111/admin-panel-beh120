@@ -1,0 +1,90 @@
+{
+  "category": [
+    {
+      "id": "5aad489d-b600-4a8c-910a-5651908084b2",
+      "NAME": "خودرو",
+      "PARENTID": 0
+    },
+    {
+      "id": "661d8246-e2f7-444d-b265-53344d1cae5b",
+      "NAME": "خوراکی",
+      "PARENTID": 0
+    },
+    {
+      "id": "4341c341-2fbb-45ad-a62e-e8631c9c65f6",
+      "NAME": "خشکبار",
+      "PARENTID": "6e7f46f4-f2a9-42c2-968a-64115154ae57"
+    },
+    {
+      "id": "f9d94474-93f3-4b34-be59-f907e251c52a",
+      "NAME": "شیرینی",
+      "PARENTID": "661d8246-e2f7-444d-b265-53344d1cae5b"
+    },
+    {
+      "id": "37ce48de-1ec5-4e1d-b822-0d749f1a8c9c",
+      "NAME": "آجیل",
+      "PARENTID": "4341c341-2fbb-45ad-a62e-e8631c9c65f6"
+    },
+    {
+      "id": "8572fa0c-db99-43bb-948d-ee7cca917586",
+      "NAME": "ایران خودرو",
+      "PARENTID": "5aad489d-b600-4a8c-910a-5651908084b2"
+    },
+    {
+      "id": "25f5fb15-19c0-478c-8f6f-1bb775cc7d51",
+      "NAME": "لباس",
+      "PARENTID": 0
+    },
+    {
+      "id": "fbba3026-1236-4021-a6de-e4e1579c71fa",
+      "NAME": "پسته",
+      "PARENTID": "4341c341-2fbb-45ad-a62e-e8631c9c65f6"
+    },
+    {
+      "id": "6e7f46f4-f2a9-42c2-968a-64115154ae57",
+      "NAME": "تنقلات",
+      "PARENTID": "661d8246-e2f7-444d-b265-53344d1cae5b"
+    },
+    {
+      "id": "377a6e3d-a182-4788-ad48-6fae0f9c4167",
+      "NAME": "سایپا",
+      "PARENTID": "5aad489d-b600-4a8c-910a-5651908084b2"
+    },
+    {
+      "id": "b5827cb5-b243-4c62-bd7b-02bba1ee6daf",
+      "NAME": "مدرسه",
+      "PARENTID": 0
+    },
+    {
+      "id": "c0c4c19e-d5a2-425c-b943-140e6876e502",
+      "NAME": "دولتی",
+      "PARENTID": "b6ff40d7-a9e8-4819-8144-249f6a915da5"
+    },
+    {
+      "id": "ee561089-ea56-4ad6-bb8a-b2e176570cc4",
+      "NAME": "مشهد",
+      "PARENTID": "c0c4c19e-d5a2-425c-b943-140e6876e502"
+    },
+    {
+      "id": "b6ff40d7-a9e8-4819-8144-249f6a915da5",
+      "NAME": "آموزشی",
+      "PARENTID": "b5827cb5-b243-4c62-bd7b-02bba1ee6daf"
+    },
+    {
+      "id": "fc6931a6-8457-46d0-8827-e0b905e6a583",
+      "NAME": "مردانه",
+      "PARENTID": "8954c0f4-f1dc-4674-a770-edc8397638cc"
+    },
+    {
+      "id": "b796538f-c46e-45ee-a226-c8fb33186ff8",
+      "NAME": "جولاب",
+      "PARENTID": "fc6931a6-8457-46d0-8827-e0b905e6a583"
+    },
+    {
+      "id": "8954c0f4-f1dc-4674-a770-edc8397638cc",
+      "NAME": "پوشاک",
+      "PARENTID": "25f5fb15-19c0-478c-8f6f-1bb775cc7d51"
+    }
+  ],
+  "tree": []
+}
