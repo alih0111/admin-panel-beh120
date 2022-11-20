@@ -31,6 +31,7 @@ export default function Tree_Drag2() {
   const [dragtree, setdragtree] = useState();
   const [ee, setee] = useState();
   let numChild;
+  let numChild2 =0;
 
   const [nodee, setNodee] = useState();
 
@@ -124,6 +125,20 @@ export default function Tree_Drag2() {
     updatedb();
   }, [dragtree]);
 
+  const num_child2 = (node) => {
+    let i = 0;
+    if (mainData) {
+      mainData.map((p) => {
+        if (p.parent == node.id) {
+          num_child2(p)
+          i++;
+        }
+      });
+    }
+    numChild2 += i;
+    console.log(numChild2);
+  };
+
   return (
     <DndProvider backend={MultiBackend} options={getBackendOptions()}>
       <div>
@@ -131,7 +146,6 @@ export default function Tree_Drag2() {
           tree={mainCategories1}
           rootId={0}
           onDrop={handleDrop}
-          // dropTargetOffset={5}
           onDragEnd={handleonDragEnd}
           render={(node, { depth, isOpen, onToggle, handleRef }) => (
             <>
@@ -140,7 +154,8 @@ export default function Tree_Drag2() {
                 className="tree_icons_parents py-2  pr-2 bg-white rounded-lg mt-3 w-52 hover:w-[368px] transition-all h-14 flex items-center "
                 style={{ marginRight: depth * 10 }}
               >
-                {num_child(node)}
+                {/* {num_child(node)} */}
+                {num_child2(node)}
                 {node.droppable && (
                   <span className="" onClick={onToggle}>
                     {isOpen ? (
@@ -214,7 +229,8 @@ export default function Tree_Drag2() {
                   <div className=" tree-inner transition-all tree_textAndicon_parents hover:bg-slate-200 hover:shadow-md  rounded-lg p-2 flex items-center justify-between">
                     <span className="">
                       {node.text}
-                      <span className="text-gray-500">{` (${numChild})`}</span>
+                      <span className="text-gray-500">{` (${numChild2})`} <span className="hidden">
+                      {numChild2=0} </span></span>
                     </span>
                     <div className="hidden tree_icons">
                       {/* add */}
@@ -316,7 +332,7 @@ export default function Tree_Drag2() {
         />
         {nodee && modalSelect ? <Modal_Tree node={nodee} /> : ""}
         {nodee && addModal ? <AddExist node={nodee} /> : ""}
-        {nodee && editModal ? <EditExist node={nodee} />: ""}
+        {nodee && editModal ? <EditExist node={nodee} /> : ""}
       </div>
     </DndProvider>
   );

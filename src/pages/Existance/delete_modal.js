@@ -61,8 +61,12 @@ export default function Modal_Tree({ node }) {
       mainData.map((item) => {
         if (item.parent == id) cc.push(item.text);
       });
-    if (cc.length > 0)
+    if (cc.length > 0){
+      let yoyo= document.querySelector('.checkbox_input')
+      yoyo.classList.remove('hidden')
+      yoyo.classList.add('flex')
       return { __html: `زیر شاخه هایی که حذف خواهند شد:  ${cc}` };
+    }
   };
 
   const checkboxHandler = () => {
@@ -93,7 +97,7 @@ export default function Modal_Tree({ node }) {
               dangerouslySetInnerHTML={childList(node.id)}
             />
           </div>{" "}
-          <div className="flex gap-2 mb-4">
+          <div className="checkbox_input hidden gap-2 mb-4">
             <input
               onClick={checkboxHandler}
               type="checkbox"
