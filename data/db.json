@@ -1,58 +1,46 @@
 {
   "category": [
     {
-      "id": "6fcf28f5-477a-4ff6-a08a-f1156a765b61",
-      "text": "لباس",
-      "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23",
+      "id": "4c6ba036-70a4-4f48-a98d-e0300a35dbef",
+      "text": "پسته",
+      "parent": "0cf19a8f-12a1-4a94-be32-fbd238a11c87",
+      "droppable": true
+    },
+    {
+      "id": "3f7d29aa-762c-403a-99ea-a64b4c853c96",
+      "text": "خشکبار ها",
+      "parent": 0,
+      "droppable": true
+    },
+    {
+      "id": "0cf19a8f-12a1-4a94-be32-fbd238a11c87",
+      "text": "آجیل",
+      "parent": "3f7d29aa-762c-403a-99ea-a64b4c853c96",
+      "droppable": true
+    },
+    {
+      "id": "c40a381e-7257-4183-ab8b-dadbf56bb7c9",
+      "text": "اکبری",
+      "parent": "4c6ba036-70a4-4f48-a98d-e0300a35dbef",
       "droppable": false
     },
     {
-      "id": "252a3a19-3706-44ee-b87c-e6952c43bb58",
-      "text": "آجیل",
-      "parent": 0,
-      "droppable": true
+      "id": "c1fd45a6-6eb7-4de7-aebd-f48456d1a532",
+      "text": "عید",
+      "parent": "0cf19a8f-12a1-4a94-be32-fbd238a11c87",
+      "droppable": false
     },
     {
-      "id": "67a210ea-d55f-4e3a-9a16-7ba8726fc3bf",
-      "text": "پسته",
-      "parent": "252a3a19-3706-44ee-b87c-e6952c43bb58"
+      "id": "152cc5e5-b949-4d5a-a5c7-00a1c5fdac7c",
+      "text": "یلدا",
+      "parent": "0cf19a8f-12a1-4a94-be32-fbd238a11c87",
+      "droppable": false
     },
     {
-      "id": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23",
-      "text": "پوشاک",
-      "parent": 0,
-      "droppable": true
-    },
-    {
-      "id": "03addc30-867b-470f-8c6f-777b75e51b00",
-      "text": "مردانه",
-      "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23"
-    },
-    {
-      "id": "e60a92af-59cb-40c8-98e8-971acecaa259",
-      "text": "جدید",
-      "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23",
-      "droppable": true
-    },
-    {
-      "id": "11ba2325-87b5-4131-bbcd-fd4820fac826",
-      "text": "new",
-      "parent": "e60a92af-59cb-40c8-98e8-971acecaa259"
-    },
-    {
-      "id": "712c7dc1-5e0d-4797-a3b2-64f01d932c92",
-      "text": "sdffd",
-      "parent": "e60a92af-59cb-40c8-98e8-971acecaa259"
-    },
-    {
-      "id": "cdc8a73f-44c9-435b-a84d-8f4d7fb82deb",
-      "text": "بچه گانه ها",
-      "parent": "54494270-1dd7-4329-a8b5-ce27e7531037"
-    },
-    {
-      "id": "54494270-1dd7-4329-a8b5-ce27e7531037",
-      "text": "قدیمی",
-      "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23"
+      "id": "48c09663-23ad-4182-813e-34586dfed94c",
+      "text": "آلو",
+      "parent": "3f7d29aa-762c-403a-99ea-a64b4c853c96",
+      "droppable": false
     }
   ],
   "tree": []

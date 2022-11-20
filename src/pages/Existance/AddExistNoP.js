@@ -4,7 +4,12 @@ import { addNewCategory } from "../../services/addNewCategoryService";
 
 export default function AddExistNoP({ addNoP }) {
   const [newExist, setNewExist] = useState();
-  let [fileObj, setFileObj] = useState({ id: 0, NAME: "0", PARENTID: 0 });
+  let [fileObj, setFileObj] = useState({
+    id: 0,
+    text: "0",
+    parent: 0,
+    droppable: false,
+  });
 
   const changeHandler = (e) => {
     setNewExist(e.target.value);
@@ -19,12 +24,12 @@ export default function AddExistNoP({ addNoP }) {
 
     // id_url = id;
     // fileObj = { id: uuid(), NAME: newExist, PARENTID: 0 };
-    fileObj = { id: uuid(), text: newExist, parent: 0 };
+    fileObj = { id: uuid(), text: newExist, parent: 0, droppable: false };
     // fileObj.PARENTID = 0;
 
     try {
       await addNewCategory(fileObj);
-    //   history.push("/existance_tree");
+      //   history.push("/existance_tree");
     } catch (error) {}
     window.location.reload();
   };
@@ -46,6 +51,7 @@ export default function AddExistNoP({ addNoP }) {
               </label>{" "}
               <div id="container" className="flex gap-4 ">
                 <input
+                  autocomplete="off"
                   value={newExist}
                   type="text"
                   name="name"
@@ -54,12 +60,13 @@ export default function AddExistNoP({ addNoP }) {
                   className=" rounded-md border-slate-400 border-[1px] text-slate-600 m-0  px-4 h-9 font-medium  outline  outline-1 outline-gray-200 focus:border-blue-500 transition-shadow ease-out focus:shadow-md mb-6 focus:border-2 "
                   onChange={changeHandler}
                 />{" "}
-              </div>{" "}              
+              </div>{" "}
             </div>{" "}
             {/* buttons */}
             <div className="flex gap-2">
               <button
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   window.location.reload();
                 }}
                 className="bg-transparent text-slate-500 px-4 py-1 rounded-lg border border-slate-500"

@@ -67,7 +67,6 @@ export default function Modal_Tree({ node }) {
 
   const checkboxHandler = () => {
     let c = document.getElementById("checkbox_save_children");
-    console.log(c.checked);
     if (c.checked == true) {
       setCheckVal(true);
     } else {
@@ -76,13 +75,7 @@ export default function Modal_Tree({ node }) {
   };
 
   return (
-    <div
-      // onClick={() => {
-      //   // console.log(setModalNum);
-      //   setModalNum = 0;
-      // }}
-      className="inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 backdrop-blur-sm shadow-xl w-screen h-screen z-10 absolute "
-    >
+    <div className="inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 backdrop-blur-sm shadow-xl w-screen h-screen z-10 absolute ">
       <div className="z-20 absolute flex justify-center items-center flex-col bg-slate-100 rounded-lg w-80 p-6 mx-auto">
         <div className="flex-col">
           <div className="block mb-1 text-slate-400">
@@ -95,21 +88,16 @@ export default function Modal_Tree({ node }) {
             <p className="text-slate-700 border border-slate-500 rounded-lg flex mx-auto py-2 px-6 m-3 mb-1">
               {node.text}
             </p>
-
-            {/* <p className="childListParents" id="chichi">{childList(node.id)}</p> */}
             <div
               className="text-gray-600 mb-3"
               dangerouslySetInnerHTML={childList(node.id)}
             />
-            {/* <div className="chichi"></div> */}
           </div>{" "}
           <div className="flex gap-2 mb-4">
             <input
               onClick={checkboxHandler}
               type="checkbox"
               id="checkbox_save_children"
-              // checked={false?true:false}
-              // checked={(e)=>!e.target.value}
             />
             <label className="text-slate-700" htmlFor="checkbox_save_children">
               زیرشاخه ها باقی بمانند

@@ -86,7 +86,6 @@ export default function Existance_tree() {
           onClick={AddNoPHandler}
         >
           <AddExistNoP addNoP={addNoP} />
-          {/* {treeShow==1?'بستن درخت':'نمایش کامل درخت'} */}
           افزودن موجودیت
         </button>
         <button
@@ -99,7 +98,7 @@ export default function Existance_tree() {
           className="heoo my-4 bg-white px-4 py-2 rounded-lg border hover:border-indigo-400 hover:bg-slate-200 hover:shadow-lg transition-all"
           onClick={dragableTreeHandler}
         >
-          {dragableTree == 1 ? "simple tree" : "dragable tree"}
+          {dragableTree == 1 ? "درخت ساده" : "درخت پیشرفته"}
         </button>
       </div>
 

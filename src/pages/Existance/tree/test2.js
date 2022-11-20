@@ -23,8 +23,8 @@ export default function Tree_Drag2() {
   let [mainCategories1, setMainCategories1] = useState([]);
 
   let [mainData, setMainData] = useState();
-  // let [modalSelect, setModalSelect] = useState(0);
-  let modalSelect = 0;
+  let [modalSelect, setModalSelect] = useState(0);
+  // let modalSelect = 0;
   let [addModal, setAddModal] = useState(0);
 
   let [editModal, setEditModal] = useState(0);
@@ -65,8 +65,8 @@ export default function Tree_Drag2() {
   }, []);
 
   const deleteHandler = async () => {
-    // setModalSelect(1);
-    modalSelect = 1;
+    setModalSelect(1);
+    // modalSelect = 1;
   };
 
   const addModalHandler = () => {
@@ -137,7 +137,7 @@ export default function Tree_Drag2() {
             <>
               <div
                 onClick={onToggle}
-                className="tree_icons_parents py-2  pr-2 bg-white rounded-lg mt-3 w-52 hover:w-96 transition-all h-14 flex items-center "
+                className="tree_icons_parents py-2  pr-2 bg-white rounded-lg mt-3 w-52 hover:w-[368px] transition-all h-14 flex items-center "
                 style={{ marginRight: depth * 10 }}
               >
                 {num_child(node)}
@@ -194,7 +194,7 @@ export default function Tree_Drag2() {
                     />
                   </svg>
                 )}
-                <span ref={handleRef} className="px-4 ">
+                <span ref={handleRef} className="px-2 ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -211,24 +211,20 @@ export default function Tree_Drag2() {
                   </svg>
                 </span>
                 <div className=" flex flex-col d-tree-head border border-white hover:border-indigo-400 rounded-lg">
-                  {/* <i className={`mr-1 ${node.icon}`}></i> */}
                   <div className=" tree-inner transition-all tree_textAndicon_parents hover:bg-slate-200 hover:shadow-md  rounded-lg p-2 flex items-center justify-between">
-                    <span className="px-2">
+                    <span className="">
                       {node.text}
                       <span className="text-gray-500">{` (${numChild})`}</span>
                     </span>
-                    <div
-                      className="hidden tree_icons"
-                      // className={`tree_icons ${
-                      //  ( addModal || modalSelect) ? 'flex' : "hidden"
-                      // } `}
-                    >
+                    <div className="hidden tree_icons">
                       {/* add */}
                       <button
-                        onClick={() => addModalHandler()}
+                        onClick={() => {
+                          addModalHandler();
+                          setNodee(node);
+                        }}
                         className="h-fit flex items-center text-sm bg-white border border-green-500 hover:bg-green-600 hover:border-green-600 text-green-600 p-[1px] transition-all hover:text-white mx-1 rounded-lg"
                       >
-                        <AddExist addModal={addModal} node={node} />
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -246,10 +242,13 @@ export default function Tree_Drag2() {
                       </button>
                       {/* edit */}
                       <button
-                        onClick={() => editModalHandler()}
+                        onClick={() => {
+                          editModalHandler();
+                          setNodee(node);
+                        }}
                         className="flex items-center hover:bg-sky-600 hover:text-white bg-white text-sm border border-sky-600 text-sky-600 mx-1 p-[1px] rounded-lg transition-all"
                       >
-                        <EditExist editModal={editModal} node={node} />
+                        {/* <EditExist editModal={editModal} node={node} /> */}
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -315,7 +314,9 @@ export default function Tree_Drag2() {
             </>
           )}
         />
-      {nodee?<Modal_Tree node={nodee} />:'' }
+        {nodee && modalSelect ? <Modal_Tree node={nodee} /> : ""}
+        {nodee && addModal ? <AddExist node={nodee} /> : ""}
+        {nodee && editModal ? <EditExist node={nodee} />: ""}
       </div>
     </DndProvider>
   );

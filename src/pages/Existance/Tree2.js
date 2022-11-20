@@ -4,6 +4,7 @@ import "./tree.css";
 import { getAllCategories } from "../../services/getAllCategoryService";
 import AddExist from "./AddExist";
 import Modal_Tree from "./delete_modal";
+import EditExist from "./EditExist";
 
 const Tree2 = ({ data, treeShow, tree_closeAll }) => {
   return (
@@ -27,6 +28,7 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
   let [mainData, setMainData] = useState();
   let [modalSelect, setModalSelect] = useState(0);
   let [addModal, setAddModal] = useState(0);
+  let [editModal, setEditModal] = useState(0);
 
   const [childVisible, setChildVisiblity] = useState(false);
   const hasChild = node.children ? true : false;
@@ -42,11 +44,21 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
   }, []);
 
   const deleteHandler = async () => {
+    window.scrollTo(0, 0);
+    document.body.classList.add("overflow-hidden");
     setModalSelect(1);
   };
 
-  const addModalHandler = () => {
+  const addModalHandler = async () => {
+    window.scrollTo(0, 0);
+    document.body.classList.add("overflow-hidden");
     setAddModal(1);
+  };
+
+  const editModalHandler = async () => {
+    window.scrollTo(0, 0);
+    document.body.classList.add("overflow-hidden");
+    setEditModal(1);
   };
 
   const num_child = (id) => {
@@ -113,7 +125,6 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
           {/* end svg */}
 
           <div className="flex flex-col d-tree-head border border-white hover:border-indigo-400 rounded-lg">
-            {/* <i className={`mr-1 ${node.icon}`}></i> */}
             <div className="tree_icons_parents transition-all hover:bg-slate-200 hover:shadow-lg w-60 rounded-lg p-2 flex items-center justify-between cursor-pointer">
               {/* header */}
               <span className="pr-2 w-full">
@@ -127,9 +138,8 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
                  transition-all`}
               >
                 {/* add */}
-                {/* <Link to={`/add/${node.id}`}> */}
                 <button
-                  onClick={(e) => addModalHandler(e)}
+                  onClick={() => addModalHandler()}
                   className="flex items-center text-sm bg-white border border-green-500 hover:bg-green-600 hover:border-green-600 text-green-600 p-[1px] transition-all hover:text-white mx-1 rounded-lg"
                 >
                   <svg
@@ -147,10 +157,10 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
                     />
                   </svg>
                 </button>
-                {/* </Link> */}
                 {/* edit */}
-                <Link to={`/edit/${node.id}`}>
-                  <button className="flex items-center hover:bg-sky-600 hover:text-white bg-white text-sm border border-sky-600 text-sky-600 mx-1 p-[1px] rounded-lg transition-all">
+                  <button
+                  onClick={() => editModalHandler()}
+                  className="flex items-center hover:bg-sky-600 hover:text-white bg-white text-sm border border-sky-600 text-sky-600 mx-1 p-[1px] rounded-lg transition-all">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -166,7 +176,6 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
                       />
                     </svg>
                   </button>
-                </Link>
                 {/* delete */}
                 <button
                   onClick={() => deleteHandler()}
@@ -223,8 +232,9 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
           </div>
         )}
       </li>
-      <AddExist addModal={addModal} node={node} />
+      {addModal ? <AddExist node={node} /> : ""}
       {modalSelect ? <Modal_Tree node={node} /> : ""}
+      {editModal ? <EditExist node={node} /> : ""}
     </>
   );
 };

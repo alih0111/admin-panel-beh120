@@ -32,13 +32,13 @@ export default function EditExist({ editModal, node }) {
 
   return (
     <>
-      {editModal == 1 ? (
+      {/* {editModal == 1 ? ( */}
         <div className="inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 backdrop-blur-sm shadow-xl w-screen h-screen z-10 absolute ">
           <form
             onSubmit={submitForm}
             className="flex justify-center items-center flex-col mt-10 bg-slate-100 rounded-lg w-80 p-6 mx-auto"
           >
-            <div className="flex-col">
+            <div className="flex-col w-52">
               <label
                 htmlFor="category-title"
                 className="block mb-1 text-slate-400"
@@ -76,9 +76,9 @@ export default function EditExist({ editModal, node }) {
             {/* </span> */} {/* <button type="submit">حذف</button> */}{" "}
           </form>
         </div>
-      ) : (
+      {/* ) : (
         ""
-      )}
+      )} */}
     </>
   );
 }

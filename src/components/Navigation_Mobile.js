@@ -25,8 +25,7 @@ const Navigation_Mobile = () => {
 
   return (
     <nav >
-      {/* <div className="bg-red-500 absolute bottom-0 h-10">.</div> */}
-      <ul id="navbar" className="grid grid-cols-3 bg-gray-600 w-full  justify-center items-center fixed bottom-0 transition-all">
+      <ul id="navbar" className="h-[80px] w-full grid grid-cols-3 bg-gray-600 justify-center items-center absolute left-0 right-0 bottom-0 transition-all">
         {items.map((item) => {
             i++
           return (
