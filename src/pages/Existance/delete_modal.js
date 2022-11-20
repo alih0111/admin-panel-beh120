@@ -2,13 +2,11 @@ import { useState, useEffect } from "react";
 import "./tree.css";
 import { deleteCategory } from "../../services/deleteCategoryService";
 import { getAllCategories } from "../../services/getAllCategoryService";
-import { getOneExist } from "../../services/getOneExistService";
 import updateExist from "../../services/updateExistService";
 
-export default function Modal_Tree({ setModalNum, node }) {
+export default function Modal_Tree({ node }) {
   let [mainData, setMainData] = useState();
-  let [deletemodalNum, setDeleteModalNum] = useState(0);
-  let [parentNode, setParentNode] = useState();
+  const [checkVal, setCheckVal] = useState(false);
 
   useEffect(() => {
     const localFetch = async () => {
@@ -22,17 +20,28 @@ export default function Modal_Tree({ setModalNum, node }) {
 
   const deleteHandler = async (e, node) => {
     e.preventDefault();
-    const getExist = async () => {
+    if (checkVal) {
+      let i = 0;
+      mainData.map(async (item) => {
+        if (item.parent == node.id) {
+          i++;
+          item.parent = node.parent;
+          try {
+            await updateExist(item.id, item);
+          } catch (error) {}
+        }
+      });
+      if (i < 2) {
+        try {
+          await deleteCategory(node.id);
+          window.location.reload();
+        } catch (error) {}
+      }
+    } else {
       try {
-        const { data } = await getOneExist(node.parent);
-        setParentNode(data);
-        // window.location.reload();
+        deleteHandlerChild(node.id, node);
       } catch (error) {}
-    };
-    getExist();
-    try {
-      deleteHandlerChild(node.id, node);
-    } catch (error) {}
+    }
   };
 
   const deleteHandlerChild = async (last_id, node) => {
@@ -56,9 +65,9 @@ export default function Modal_Tree({ setModalNum, node }) {
       return { __html: `زیر شاخه هایی که حذف خواهند شد:  ${cc}` };
   };
 
-  const [checkVal, setCheckVal] = useState(false);
   const checkboxHandler = () => {
     let c = document.getElementById("checkbox_save_children");
+    console.log(c.checked);
     if (c.checked == true) {
       setCheckVal(true);
     } else {
@@ -66,77 +75,64 @@ export default function Modal_Tree({ setModalNum, node }) {
     }
   };
 
-  const checkboxChange = (e) => {
-    // e.target.checked=!e.target.checked
-    console.log(e.target.checked);
-  };
-
   return (
-    <>
-      {setModalNum == 1 ? (
-        <>
+    <div
+      // onClick={() => {
+      //   // console.log(setModalNum);
+      //   setModalNum = 0;
+      // }}
+      className="inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 backdrop-blur-sm shadow-xl w-screen h-screen z-10 absolute "
+    >
+      <div className="z-20 absolute flex justify-center items-center flex-col bg-slate-100 rounded-lg w-80 p-6 mx-auto">
+        <div className="flex-col">
+          <div className="block mb-1 text-slate-400">
+            نام موجودیت / دسته بندی{" "}
+          </div>{" "}
           <div
-            onClick={() => {
-              // console.log(setModalNum);
-              setModalNum = 0;
-            }}
-            className="inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 backdrop-blur-sm shadow-xl w-screen h-screen z-10 absolute "
+            id="container"
+            className="flex flex-col items-center justify-center gap-4 "
           >
-            <div className="z-20 absolute flex justify-center items-center flex-col bg-slate-100 rounded-lg w-80 p-6 mx-auto">
-              <div className="flex-col">
-                <div className="block mb-1 text-slate-400">
-                  نام موجودیت / دسته بندی{" "}
-                </div>{" "}
-                <div
-                  id="container"
-                  className="flex flex-col items-center justify-center gap-4 "
-                >
-                  <p className="text-slate-700 border border-slate-500 rounded-lg flex mx-auto py-2 px-6 m-3 mb-1">
-                    {node.text}
-                  </p>
+            <p className="text-slate-700 border border-slate-500 rounded-lg flex mx-auto py-2 px-6 m-3 mb-1">
+              {node.text}
+            </p>
 
-                  {/* <p className="childListParents" id="chichi">{childList(node.id)}</p> */}
-                  <div
-                    className="text-gray-600 mb-3"
-                    dangerouslySetInnerHTML={childList(node.id)}
-                  />
-                  {/* <div className="chichi"></div> */}
-                </div>{" "}
-                <div className="flex gap-2 mb-4">
-                  <input onClick={checkboxHandler} type="checkbox" id="checkbox_save_children" />
-                  <label className="text-slate-700" htmlFor="checkbox_save_children">
-                    زیرشاخه ها باقی بمانند
-                  </label>
-                </div>
-              </div>{" "}
-              {/* <div className="flex mb-4 gap-2">
-                 
-                </div> */}
-              {/* <span className=" p-1 rounded-lg border border-indigo-400"> */}{" "}
-              {/* buttons */}
-              <div className="flex gap-2">
-                <button
-                  onClick={() => {
-                    window.location.reload();
-                  }}
-                  className="bg-transparent text-slate-500 px-4 py-1 rounded-lg border border-slate-500"
-                >
-                  انصراف{" "}
-                </button>{" "}
-                <button
-                  onClick={(e) => deleteHandler(e, node)}
-                  className="bg-transparent text-red-500 px-4 py-1 rounded-lg border border-red-500 hover:bg-red-500 hover:text-white transition-all"
-                >
-                  حذف{" "}
-                </button>{" "}
-              </div>{" "}
-              {/* </span> */} {/* <button type="submit">حذف</button> */}{" "}
-            </div>
+            {/* <p className="childListParents" id="chichi">{childList(node.id)}</p> */}
+            <div
+              className="text-gray-600 mb-3"
+              dangerouslySetInnerHTML={childList(node.id)}
+            />
+            {/* <div className="chichi"></div> */}
+          </div>{" "}
+          <div className="flex gap-2 mb-4">
+            <input
+              onClick={checkboxHandler}
+              type="checkbox"
+              id="checkbox_save_children"
+              // checked={false?true:false}
+              // checked={(e)=>!e.target.value}
+            />
+            <label className="text-slate-700" htmlFor="checkbox_save_children">
+              زیرشاخه ها باقی بمانند
+            </label>
           </div>
-        </>
-      ) : (
-        ""
-      )}
-    </>
+        </div>{" "}
+        <div className="flex gap-2">
+          <button
+            onClick={() => {
+              window.location.reload();
+            }}
+            className="bg-transparent text-slate-500 px-4 py-1 rounded-lg border border-slate-500"
+          >
+            انصراف{" "}
+          </button>{" "}
+          <button
+            onClick={(e) => deleteHandler(e, node)}
+            className="bg-transparent text-red-500 px-4 py-1 rounded-lg border border-red-500 hover:bg-red-500 hover:text-white transition-all"
+          >
+            حذف{" "}
+          </button>{" "}
+        </div>{" "}
+      </div>
+    </div>
   );
 }

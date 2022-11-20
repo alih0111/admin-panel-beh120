@@ -7,7 +7,7 @@ import Modal_Tree from "./delete_modal";
 
 const Tree2 = ({ data, treeShow, tree_closeAll }) => {
   return (
-   <div className="d-tree w-fit ">
+    <div className="d-tree w-fit ">
       <ul className="flex flex-col d-tree-container gap-1 border-r rounded-lg border-slate-400">
         {data != undefined && data.length >= 1
           ? data.map((tree) => (
@@ -123,9 +123,8 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
                 )})`}</span>
               </span>
               <div
-                className={`tree_icons ${
-                  addModal || modalSelect ? "flex" : "hidden"
-                } transition-all`}
+                className={`tree_icons hidden
+                 transition-all`}
               >
                 {/* add */}
                 {/* <Link to={`/add/${node.id}`}> */}
@@ -133,7 +132,6 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
                   onClick={(e) => addModalHandler(e)}
                   className="flex items-center text-sm bg-white border border-green-500 hover:bg-green-600 hover:border-green-600 text-green-600 p-[1px] transition-all hover:text-white mx-1 rounded-lg"
                 >
-                  <AddExist addModal={addModal} node={node} />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -174,7 +172,6 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
                   onClick={() => deleteHandler()}
                   className="flex items-center bg-white text-sm border border-red-600 text-red-600 hover:bg-red-600 hover:text-white p-[1px] mx-1 rounded-lg transition-all"
                 >
-                  <Modal_Tree setModalNum={modalSelect} node={node} />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -214,7 +211,6 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
           </div>
         </div>
 
-        {/* {console.log(treeShow)} */}
         {hasChild && (childVisible || treeShow == 1) && (
           <div className="d-tree-content mr-2">
             <ul className="flex flex-col d-tree-container">
@@ -227,6 +223,8 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
           </div>
         )}
       </li>
+      <AddExist addModal={addModal} node={node} />
+      {modalSelect ? <Modal_Tree node={node} /> : ""}
     </>
   );
 };

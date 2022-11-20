@@ -7,12 +7,6 @@
       "droppable": false
     },
     {
-      "id": "da82a7d7-e51c-4d7b-b5b3-501cc1f22086",
-      "text": "خشکبار",
-      "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23",
-      "droppable": false
-    },
-    {
       "id": "252a3a19-3706-44ee-b87c-e6952c43bb58",
       "text": "آجیل",
       "parent": 0,
@@ -35,9 +29,30 @@
       "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23"
     },
     {
-      "id": "898e4728-9cc1-4143-98a5-04b0a780b03a",
-      "text": "بادوم",
-      "parent": "252a3a19-3706-44ee-b87c-e6952c43bb58"
+      "id": "e60a92af-59cb-40c8-98e8-971acecaa259",
+      "text": "جدید",
+      "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23",
+      "droppable": true
+    },
+    {
+      "id": "11ba2325-87b5-4131-bbcd-fd4820fac826",
+      "text": "new",
+      "parent": "e60a92af-59cb-40c8-98e8-971acecaa259"
+    },
+    {
+      "id": "712c7dc1-5e0d-4797-a3b2-64f01d932c92",
+      "text": "sdffd",
+      "parent": "e60a92af-59cb-40c8-98e8-971acecaa259"
+    },
+    {
+      "id": "cdc8a73f-44c9-435b-a84d-8f4d7fb82deb",
+      "text": "بچه گانه ها",
+      "parent": "54494270-1dd7-4329-a8b5-ce27e7531037"
+    },
+    {
+      "id": "54494270-1dd7-4329-a8b5-ce27e7531037",
+      "text": "قدیمی",
+      "parent": "31db5ee5-9c4e-469f-aaa9-8addf42d0f23"
     }
   ],
   "tree": []
