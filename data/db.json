@@ -59,6 +59,16 @@
       "text": "206",
       "parent": "bb698cb2-34ef-40eb-8737-387b3d85e366",
       "droppable": false
+    },
+    {
+      "id": "e24f577e-d818-4617-a1e6-0a86ae000534",
+      "text": "قبض",
+      "parent": 0
+    },
+    {
+      "id": "19008405-2215-48cd-8a04-d5cd7528ad8b",
+      "text": "آب",
+      "parent": "e24f577e-d818-4617-a1e6-0a86ae000534"
     }
   ],
   "tree": []
