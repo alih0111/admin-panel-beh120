@@ -11,11 +11,14 @@ const items = [
 
 const Navigation_Mobile = () => {
 
+  document.body.classList.add("relative");
   var prevScrollpos = window.pageYOffset;
+
+  // bottom nav hide on scroll
   window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;
     if (prevScrollpos > currentScrollPos) {
-      document.getElementById("navbar").style.bottom = "0";
+      document.getElementById("navbar").style.bottom = "0px";
     } else {
       document.getElementById("navbar").style.bottom = "-80px";
     }
@@ -24,15 +27,14 @@ const Navigation_Mobile = () => {
   let i=0
 
   return (
-    <nav >
-      <ul id="navbar" className="h-[80px] w-full grid grid-cols-3 bg-gray-600 justify-center items-center absolute left-0 right-0 bottom-0 transition-all">
+      <ul id="navbar" className="h-[80px] w-full grid grid-cols-3 bg-gray-600 justify-center items-center fixed left-0 right-0 bottom-0 transition-all">
         {items.map((item) => {
             i++
           return (
             <NavLink
               to={item.to}
               activeClassName="activeLink"
-              exact={item.exact || false}
+              // exact={item.exact || false}
               className="focus:bg-gray-400 transition-all rounded-md text-gray-200 p-0 mx-2"
             >
               <li
@@ -45,7 +47,7 @@ const Navigation_Mobile = () => {
           );
         })}
       </ul>
-    </nav>
+    // </nav>
   );
 };
 export default Navigation_Mobile;

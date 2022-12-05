@@ -512,10 +512,6 @@ video {
   align-items: center;
   justify-content: center;
 }
-.scroll-fixed {
-  height: 100%;
-  overflow: hidden;
-}
 
 .static {
   position: static;
@@ -548,6 +544,14 @@ video {
   top: 0px;
 }
 
+.left-0 {
+  left: 0px;
+}
+
+.right-0 {
+  right: 0px;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -566,14 +570,6 @@ video {
 
 .-right-0 {
   right: -0px;
-}
-
-.right-0 {
-  right: 0px;
-}
-
-.left-0 {
-  left: 0px;
 }
 
 .-z-10 {
@@ -598,10 +594,6 @@ video {
 
 .m-1 {
   margin: 0.25rem;
-}
-
-.m-10 {
-  margin: 2.5rem;
 }
 
 .m-0 {
@@ -707,10 +699,6 @@ video {
   margin-left: 0.5rem;
 }
 
-.mr-1 {
-  margin-right: 0.25rem;
-}
-
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -743,8 +731,8 @@ video {
   height: 0px;
 }
 
-.h-10 {
-  height: 2.5rem;
+.h-\[80px\] {
+  height: 80px;
 }
 
 .h-12 {
@@ -755,12 +743,16 @@ video {
   height: 1rem;
 }
 
-.h-6 {
-  height: 1.5rem;
+.h-10 {
+  height: 2.5rem;
 }
 
 .h-14 {
   height: 3.5rem;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .h-9 {
@@ -775,17 +767,13 @@ video {
   height: 1.25rem;
 }
 
+.h-6 {
+  height: 1.5rem;
+}
+
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
-}
-
-.h-full {
-  height: 100%;
-}
-
-.h-\[80px\] {
-  height: 80px;
 }
 
 .w-full {
@@ -800,20 +788,16 @@ video {
   width: 1rem;
 }
 
-.w-6 {
-  width: 1.5rem;
-}
-
-.w-screen {
-  width: 100vw;
-}
-
 .w-80 {
   width: 20rem;
 }
 
-.w-\[160px\] {
-  width: 160px;
+.w-52 {
+  width: 13rem;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 .w-5 {
@@ -829,16 +813,8 @@ video {
   width: 15rem;
 }
 
-.w-52 {
-  width: 13rem;
-}
-
-.w-7 {
-  width: 1.75rem;
-}
-
-.w-72 {
-  width: 18rem;
+.w-6 {
+  width: 1.5rem;
 }
 
 .min-w-\[20rem\] {
@@ -1363,62 +1339,6 @@ video {
 
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}
-
-.hover\:w-96:hover {
-  width: 24rem;
-}
-
-.hover\:w-80:hover {
-  width: 20rem;
-}
-
-.hover\:w-8:hover {
-  width: 2rem;
-}
-
-.hover\:w-9:hover {
-  width: 2.25rem;
-}
-
-.hover\:w-\[\]:hover {
-  width: ;
-}
-
-.hover\:w-\[8\]:hover {
-  width: 8;
-}
-
-.hover\:w-\[80\]:hover {
-  width: 80;
-}
-
-.hover\:w-\[80px\]:hover {
-  width: 80px;
-}
-
-.hover\:w-\[380px\]:hover {
-  width: 380px;
-}
-
-.hover\:w-\[360px\]:hover {
-  width: 360px;
-}
-
-.hover\:w-\[370px\]:hover {
-  width: 370px;
-}
-
-.hover\:w-\[365px\]:hover {
-  width: 365px;
-}
-
-.hover\:w-\[36px\]:hover {
-  width: 36px;
-}
-
-.hover\:w-\[367px\]:hover {
-  width: 367px;
 }
 
 .hover\:w-\[368px\]:hover {

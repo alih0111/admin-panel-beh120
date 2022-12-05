@@ -1,35 +1,28 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./tree.css";
-import { getAllCategories } from "../../services/getAllCategoryService";
-import AddExist from "./AddExist";
-import Modal_Tree from "./delete_modal";
-import EditExist from "./EditExist";
+import { getAllCategories } from "../../../services/getAllCategoryService";
+import AddExist from "../../../components/Modals/AddExist";
+import Modal_Tree from "../../../components/Modals/delete_modal";
+import EditExist from "../../../components/Modals/EditExist";
 
-const Tree2 = ({ data, treeShow, tree_closeAll }) => {
+const Tree2 = ({ data, treeShow }) => {
   return (
     <div className="d-tree w-fit ">
       <ul className="flex flex-col d-tree-container gap-1 border-r rounded-lg border-slate-400">
         {data != undefined && data.length >= 1
-          ? data.map((tree) => (
-              <TreeNode
-                node={tree}
-                treeShow={treeShow}
-                tree_closeAll={tree_closeAll}
-              />
-            ))
+          ? data.map((tree) => <TreeNode node={tree} treeShow={treeShow} />)
           : "loading"}
       </ul>
     </div>
   );
 };
 
-const TreeNode = ({ node, treeShow, tree_closeAll }) => {
+const TreeNode = ({ node, treeShow }) => {
   let [mainData, setMainData] = useState();
-  let [modalSelect, setModalSelect] = useState(0);
+  let [deleteModal, setDeleteModal] = useState(0);
   let [addModal, setAddModal] = useState(0);
   let [editModal, setEditModal] = useState(0);
-
   const [childVisible, setChildVisiblity] = useState(false);
   const hasChild = node.children ? true : false;
 
@@ -46,7 +39,7 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
   const deleteHandler = async () => {
     window.scrollTo(0, 0);
     document.body.classList.add("overflow-hidden");
-    setModalSelect(1);
+    setDeleteModal(1);
   };
 
   const addModalHandler = async () => {
@@ -78,18 +71,17 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
       <li className="bg-white p-2 mr-2 sm:mr-0  justify-center rounded-lg d-tree-node flex flex-col">
         <div
           className=" flex activeParent items-center"
-          onClick={(e) => {
+          onClick={() => {
             setChildVisiblity((v) => !v);
           }}
         >
-          {/* start svg */}
+          {/* right items svg */}
           {hasChild && (
             <div
               className={`tree_node flex items-center d-inline d-tree-toggle ${
                 childVisible || treeShow == 1 ? "active" : ""
               }`}
             >
-              {/* <FontAwesomeIcon icon='caret-right' /> */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -124,6 +116,7 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
           )}
           {/* end svg */}
 
+          {/* Each Item Content */}
           <div className="flex flex-col d-tree-head border border-white hover:border-indigo-400 rounded-lg">
             <div className="tree_icons_parents transition-all hover:bg-slate-200 hover:shadow-lg w-60 rounded-lg p-2 flex items-center justify-between cursor-pointer">
               {/* header */}
@@ -158,24 +151,25 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
                   </svg>
                 </button>
                 {/* edit */}
-                  <button
+                <button
                   onClick={() => editModalHandler()}
-                  className="flex items-center hover:bg-sky-600 hover:text-white bg-white text-sm border border-sky-600 text-sky-600 mx-1 p-[1px] rounded-lg transition-all">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-5 h-5"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                      />
-                    </svg>
-                  </button>
+                  className="flex items-center hover:bg-sky-600 hover:text-white bg-white text-sm border border-sky-600 text-sky-600 mx-1 p-[1px] rounded-lg transition-all"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                    />
+                  </svg>
+                </button>
                 {/* delete */}
                 <button
                   onClick={() => deleteHandler()}
@@ -223,17 +217,14 @@ const TreeNode = ({ node, treeShow, tree_closeAll }) => {
         {hasChild && (childVisible || treeShow == 1) && (
           <div className="d-tree-content mr-2">
             <ul className="flex flex-col d-tree-container">
-              <Tree2
-                data={node.children}
-                treeShow={treeShow}
-                tree_closeAll={tree_closeAll}
-              />
+              <Tree2 data={node.children} treeShow={treeShow} />
             </ul>
           </div>
         )}
       </li>
+
       {addModal ? <AddExist node={node} /> : ""}
-      {modalSelect ? <Modal_Tree node={node} /> : ""}
+      {deleteModal ? <Modal_Tree node={node} /> : ""}
       {editModal ? <EditExist node={node} /> : ""}
     </>
   );

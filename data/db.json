@@ -3,7 +3,7 @@
     {
       "id": "4de1218f-9a5d-4fc7-ab7f-ffbf096ed9de",
       "text": "خوراکی",
-      "parent": 0,
+      "parent": "04355f6a-963a-4b2d-8ead-9f86e87a01a0",
       "droppable": false
     },
     {
@@ -13,39 +13,51 @@
       "droppable": true
     },
     {
-      "id": "82ba2a23-9b0c-41ca-9838-81f77e02917a",
-      "text": "آجیل",
+      "id": "67a5c18a-6282-4794-9c0c-48ed25c1ca09",
+      "text": "پسته",
       "parent": "57df3302-c56d-4d7b-b723-6e883cb38ba0",
       "droppable": true
     },
     {
-      "id": "67a5c18a-6282-4794-9c0c-48ed25c1ca09",
-      "text": "پسته",
-      "parent": "82ba2a23-9b0c-41ca-9838-81f77e02917a",
-      "droppable": true
-    },
-    {
-      "id": "0ad45c96-e135-4d4c-88d7-812e10aeb42a",
-      "text": "اکبری",
-      "parent": "5cd46c80-a241-4443-a7d5-d5713166191f",
-      "droppable": false
-    },
-    {
       "id": "8ac59052-ea4c-462b-90d6-cfd3efcffc00",
       "text": "زرشک",
-      "parent": "82ba2a23-9b0c-41ca-9838-81f77e02917a",
+      "parent": "57df3302-c56d-4d7b-b723-6e883cb38ba0",
       "droppable": false
-    },
-    {
-      "id": "5cd46c80-a241-4443-a7d5-d5713166191f",
-      "text": "جدید",
-      "parent": "67a5c18a-6282-4794-9c0c-48ed25c1ca09",
-      "droppable": true
     },
     {
       "id": "04355f6a-963a-4b2d-8ead-9f86e87a01a0",
       "text": "آلو",
-      "parent": "82ba2a23-9b0c-41ca-9838-81f77e02917a",
+      "parent": "57df3302-c56d-4d7b-b723-6e883cb38ba0",
+      "droppable": true
+    },
+    {
+      "id": "ce5b72b4-809b-4101-8f5a-63fc428bd2c7",
+      "text": "بخارا",
+      "parent": "04355f6a-963a-4b2d-8ead-9f86e87a01a0",
+      "droppable": false
+    },
+    {
+      "id": "fe03f703-9762-4571-b551-b1ddf8193348",
+      "text": "خودرو",
+      "parent": 0,
+      "droppable": false
+    },
+    {
+      "id": "bb698cb2-34ef-40eb-8737-387b3d85e366",
+      "text": "ایران خودرو",
+      "parent": "04355f6a-963a-4b2d-8ead-9f86e87a01a0",
+      "droppable": true
+    },
+    {
+      "id": "2a324752-bf7a-4b3f-a44a-8e54e7748fe4",
+      "text": "اکبری",
+      "parent": "67a5c18a-6282-4794-9c0c-48ed25c1ca09",
+      "droppable": false
+    },
+    {
+      "id": "a9557d8a-b3f9-4f66-b631-81b8019ddf89",
+      "text": "206",
+      "parent": "bb698cb2-34ef-40eb-8737-387b3d85e366",
       "droppable": false
     }
   ],

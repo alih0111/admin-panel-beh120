@@ -9,7 +9,7 @@ export default function Existance({ history }) {
   const [mainCategories, setMainCategories] = useState([]);
   let [selectVal, setSelectVal] = useState();
   let [optionList, setOptionList] = useState([]);
-  let [fileObj, setFileObj] = useState({ id: 0, NAME: "0", PARENTID: 0 });
+  let [fileObj, setFileObj] = useState({ id: 0, text: "0", parent: 0 });
 
   // fetch categories from db
   useEffect(() => {
@@ -38,8 +38,8 @@ export default function Existance({ history }) {
       setOptionList((prevArray) => [
         ...prevArray,
         {
-          value: element.NAME,
-          label: element.NAME,
+          value: element.text,
+          label: element.text,
           id: element.id,
         },
       ]);
@@ -52,14 +52,14 @@ export default function Existance({ history }) {
     setSelectVal(text);
     mainCategories.forEach((element) => {
       if (element.id == e.id) {
-        fileObj.PARENTID = element.id;
-      } else {
+        fileObj.parent = element.id;
       }
     });
   };
 
   const submitForm = async (e) => {
     e.preventDefault();
+    // input_1 empty
     if (inputCategories == "" || inputCategories==undefined) {
       alert("تکمیل فیلد اول اجباری است");
       return;
@@ -67,12 +67,12 @@ export default function Existance({ history }) {
 
     // choosed nothing
     if (selectVal == undefined) {
-      fileObj = { id: uuid(), NAME: inputCategories, PARENTID: 0 };
+      fileObj = { id: uuid(), text: inputCategories, parent: 0 };
     }
     // choosed something
     else {
       fileObj.id = uuid();
-      fileObj.NAME = inputCategories;
+      fileObj.text = inputCategories;
     }
 
     try {
@@ -87,13 +87,13 @@ export default function Existance({ history }) {
         <h2 className="">افزودن موجودیت / دسته بندی</h2>
       </div>
 
-      {/* موجودیت */}
+      {/* Existance Form */}
       <form
         onSubmit={submitForm}
         className="bg-gray-100 p-4 rounded-xl flex flex-col gap-y-4 sm:max-w-[34rem] sm:mx-auto md:max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl"
       >
         <div className="grid gap-5 sm:grid-cols-2 items-center justify-center mb-8">
-          {/* input */}
+          {/* input_1 */}
           <div className="flex-col mx-8">
             <label
               htmlFor="category-title"
@@ -112,7 +112,8 @@ export default function Existance({ history }) {
               />
             </div>
           </div>
-          {/* start selectbox */}
+          {/* end input_1 */}
+          {/* input_2 SelectBox */}
           <div className=" sm:pt-0 mx-8">
             <div className="flex-col">
               <h4 className="block mb-1 text-slate-400  ">انتخاب دسته بندی</h4>
@@ -122,8 +123,6 @@ export default function Existance({ history }) {
                   options={optionList}
                   name="select_0"
                   onChange={getSelectVal}
-                  // styles={colourStyles}
-                  // id="product-category"
                   className="select_0 bg-transparent h-10  rounded-lg text-sm font-medium title-color  outline outline-1 outline-gray-200  focus:border-gray-300 focus:ring-0 transition-shadow ease-out focus:shadow-md"
                 ></Select>
               </div>
@@ -131,6 +130,7 @@ export default function Existance({ history }) {
           </div>
           {/* end selectbox */}
         </div>
+        {/* buttons */}
         <div className="flex justify-end gap-4 sm:mx-8 mx-auto ">
           <button
             type="submit"

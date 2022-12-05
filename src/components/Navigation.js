@@ -1,4 +1,4 @@
-import { withRouter, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const items = [
   { name: "جدول", to: "/", exact: true },
@@ -22,7 +22,7 @@ const Navigation = () => {
             <NavLink
              to={item.to}
               activeClassName="activeLink"
-              exact={item.exact || false}
+              // exact={item.exact}
               className="focus:bg-gray-400 transition-all rounded-md text-gray-200 p-0"                          
             >              
               <li

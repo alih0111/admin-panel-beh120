@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./tree.css";
+// import "./tree.css";
 import { deleteCategory } from "../../services/deleteCategoryService";
 import { getAllCategories } from "../../services/getAllCategoryService";
 import updateExist from "../../services/updateExistService";

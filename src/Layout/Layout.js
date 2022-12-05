@@ -1,12 +1,8 @@
-import React, { useState } from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import React from "react";
 import Sidebar from "../components/Sidebar";
-// import mobileSidebar from "../components/mobileSidebar";
 import MobileSidebar from "../components/mobileSidebar";
 
 export default function Layout({ children }) {
-
   // const hambergerHandler = () => {
   //   const sidebar = document.querySelector(".sidebar");
   //   const hamberger = document.querySelector(".hamberger");
@@ -28,24 +24,18 @@ export default function Layout({ children }) {
 
   return (
     <>
-      {/* <content/> */}
-      <div className="absolute inset-0 bg-slate-200 -z-10"></div>
-      <div className="grid grid-cols-4 gap-2 bg-gray-200">       
-        
+      <div className="grid grid-cols-4 gap-2 bg-gray-200">
+        {/* Sidebar */}
         <div className="hidden sm:block sidebar">
           <Sidebar />
         </div>
-
-        <div
-          className="sm:col-span-3 col-span-4 main_content"
-        >
-          {children}
-        </div>
-        {/* mobile sidebar */}
+        {/* <content/> */}
+        <div className="sm:col-span-3 col-span-4 main_content">{children}</div>
       </div>
+      {/* mobile sidebar */}
       <div className="sm:hidden mt-24">
-        <MobileSidebar/>
-      </div>          
+        <MobileSidebar />
+      </div>
     </>
   );
 }
